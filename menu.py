@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 
 class Menu(QMainWindow):
     def __init__(self, name):
-        self.name = name
+        self.name = user_name
         super(Menu, self).__init__()
         uic.loadUi('ui/2_main_menu.ui', self)
         # self.label_username.setText(self.name)

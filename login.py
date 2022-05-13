@@ -36,6 +36,7 @@ class Login(QMainWindow):
                 user_data = json.load(jsFile)
             if user_data['username'] == self.user_name:
                 self.cams = menu.Menu(self.user_name)
+                # Sonraki menuyu gostermek icin kullanilir.
                 self.cams.show()
                 self.close()
         else:
@@ -47,8 +48,8 @@ class Login(QMainWindow):
         self.user_data = {
                 'username': self.user_name,
                 # 'password': self.password,
-                'level': 100,
-                'time': 5230
+                'level': 1,
+                'time': 0
         }
 
  
