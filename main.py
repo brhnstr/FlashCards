@@ -3,12 +3,12 @@ import json
 
 
 
-with open('words1.csv', 'a', newline='') as file:
-    fieldnames = ['Frequency','Dutch Word', 'English Word']
+with open('words.csv', 'r', newline='') as file:
+    fieldnames = ['Dutch Word', 'English Word','Row_Number']
     writer = csv.DictWriter(file, fieldnames=fieldnames)
 
-    writer.writeheader()
-    writer.writerow({'Frequency': '3', 'Dutch Word': 'niuew', 'English Word': 'new'})
+    # writer.writeheader()
+    # writer.writerow({'Frequency': '3', 'Dutch Word': 'niuew', 'English Word': 'new'})
 
 def csv_to_json(csvFilePath,jsonFilePath):
     data = []
@@ -16,7 +16,7 @@ def csv_to_json(csvFilePath,jsonFilePath):
 
     with open(csvFilePath, encoding='utf-8') as csvfile:
         #load csv file data using csv library's dictionary reader
-        csvReader = csv.DictReader(csvfile)
+        csvReader = csv.DictReader(csvfile) 
         print(csvReader)
         #convert each csv row into python dict
         for row in csvReader:
@@ -27,11 +27,14 @@ def csv_to_json(csvFilePath,jsonFilePath):
     #convert python data to JSON String and write to file
     with open(jsonFilePath, 'w', encoding='utf-8') as jsonFile:
         jsonString = json.dumps(data, indent=4)
+        # for i in jsonString:
+        #     data[range(1,20)] = data["order_number"]
+        #     data["order_number"] += 1
         jsonFile.write(jsonString)
        
 
-csvFilePath = 'word_list2.csv'
-jsonFilePath = 'word_list2.json'
+csvFilePath = 'words.csv'
+jsonFilePath = 'word_list.json'
 
 csv_to_json(csvFilePath,jsonFilePath)
 
