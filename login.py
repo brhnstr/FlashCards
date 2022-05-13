@@ -60,7 +60,9 @@ class Login(QMainWindow):
 
 
     def quit(self):
-        self.close()
+        # self.close()
+        # pencereyi tamamen kapatmak icin asagidaki kod calisiyor
+        sys.exit()
 
 app=QApplication(sys.argv)
 mainwindow=Login()
