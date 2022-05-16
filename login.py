@@ -49,6 +49,7 @@ class Login(QMainWindow):
         }
 
  
+
         
         js_file_name = 'user/'+self.user_name+'.json'
         with open(js_file_name, 'w') as jsFile:
@@ -57,6 +58,9 @@ class Login(QMainWindow):
 
     def quit(self):
         sys.exit()
+    def back(self):
+        pass
+        
 # Main App
 app=QApplication(sys.argv)
 mainwindow=Login()
@@ -67,6 +71,7 @@ widget.setFixedWidth(800)
 widget.setFixedHeight(800)
 widget.show()
 app.exec_()
+
 
 
 

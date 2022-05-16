@@ -54,4 +54,5 @@ class Menu(QMainWindow):
     def quit(self):
         # Record Data
         sys.exit()
-    
+    def back(self):
+        pass

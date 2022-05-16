@@ -139,6 +139,8 @@ class Game(QMainWindow):
     def exit(self):
         # Data record!
         sys.exit()
+    def back(self):
+        pass
 
 
 
