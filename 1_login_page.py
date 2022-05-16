@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'login_page.ui'
+# Form implementation generated from reading ui file '1_login_page.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -146,6 +146,7 @@ class Ui_MainWindow(object):
 "border-style: solid;\n"
 "border-width:2px;\n"
 "border-radius:10px;")
+        self.username_login_page.setText("")
         self.username_login_page.setAlignment(QtCore.Qt.AlignCenter)
         self.username_login_page.setObjectName("username_login_page")
         self.quit_login_page = QtWidgets.QPushButton(self.centralwidget)
@@ -257,7 +258,6 @@ class Ui_MainWindow(object):
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:72pt; font-weight:600; color:#f44786;\">S</span></p></body></html>"))
-        self.username_login_page.setText(_translate("MainWindow", "emrah"))
         self.username_login_page.setPlaceholderText(_translate("MainWindow", "Username"))
         self.quit_login_page.setText(_translate("MainWindow", "QUIT"))
         self.login_login_page.setText(_translate("MainWindow", "LOGIN"))
