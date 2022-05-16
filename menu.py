@@ -1,5 +1,6 @@
 import json
 import sys
+from unicodedata import name
 
 from PyQt5 import uic
 import os
@@ -9,7 +10,8 @@ import game
 class Menu(QMainWindow):
     
     def __init__(self,user_name):
-        self.name = user_name
+        self.user_name = user_name
+        
         super(Menu, self).__init__()
         uic.loadUi('ui/2_main_menu.ui', self)
         # self.username_login_page.setText(self.user_name)
@@ -26,16 +28,18 @@ class Menu(QMainWindow):
         self.show()
     
     def play(self):
-        self.cams = game.Game(self.name)
+        self.cams = game.Game(self.user_name)
+       
+        
         self.cams.show()
     
 
-    # def total_progress(self):
-    #     with open('user/'+self.name+'.json', 'r') as jsFile:
-    #         user_data = json.loads(jsFile)
-    #         self.level = user_data["level"]
-    #         a = self.level*100/250
-    #         return a
+    def total_progress(self):
+        with open('user/'+self.user_name+'.json', 'r') as jsFile:
+            user_data = json.loads(jsFile)
+            self.level_1 = user_data["level"]
+            a = self.level_1*100/250
+            return a
 
 
     def setTimer(self):

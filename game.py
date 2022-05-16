@@ -7,21 +7,21 @@ import menu
 class Game(QMainWindow):
 
 
-    def __init__(self,name, level):
+    def __init__(self,name):
         self.name = name
-        self.level = level
-        # self.word_list = word_list
+        #self.level = level
+        
         super(Game, self).__init__()
         uic.loadUi('ui/3_game_screen.ui', self)
         # self.flash_card_game_screen.clicked.connect(self.card) 
         
         # Added
         self.true_button_game_screen.clicked.connect(self.true)  
-        # self.false_button_game_screen.clicked.connect(self.false)
+        self.false_button_game_screen.clicked.connect(self.false)
         # Kelimeleri getirmek icin
-        self.language_flash_card_game_screen.setText(self.user.word_list)
+        #self.language_flash_card_game_screen.setText(self.name.word_list)
         self.exit_login_page.clicked.connect(self.exit)
-        self.level_game_screen.setText(self.level)
+        #self.level_game_screen.setText(str(self.level))
         # self.back_game_screen.clicked.connect(self.back) 
          
         self.show()
@@ -30,7 +30,7 @@ class Game(QMainWindow):
     def card(self):
         self.word_list = []
         self.index = 0
-        self.level_game_screen.setText(self.level)
+        self.level_game_screen.setText(str(self.level))
         with open('word_list.json', encoding = 'utf-8') as f:
             self.data = json.load(f)
  
@@ -40,14 +40,15 @@ class Game(QMainWindow):
             self.word_list.append([self.data[str(item)]['Dutch Word'], self.data[str(item)]['English Word']])
         
         
-        self.language_flash_card_game_screen.setText('Netherlands')
-        self.language_flash_card_game_screen_2.setText(self.word_list[self.index][0])
+        
         
 
         self.count_true = 0
         self.count_false = 0
-        self.true_button_game_screen.setText(str(self.count_true))
-        self.false_button_game_screen.setText(str(self.count_false))
+        self.num_of_true_game_screen.setText(str(self.count_true))
+        self.num_of_false_game_screen.setText(str(self.count_false))
+        self.language_flash_card_game_screen.setText('Netherlands')
+        self.language_flash_card_game_screen_2.setText(self.word_list[self.index][0])
 
    
 
@@ -67,43 +68,54 @@ class Game(QMainWindow):
         
 
     def true(self):
-        self.true_button_game_screen.setEnable(False)
-        self.false_button_game_screen.setEnable(False)
+        self.true_button_game_screen.setEnabled(False)
+        self.false_button_game_screen.setEnabled(False)
 
-        self.i = 0
-        self.word_list.remove(self.word_list[self.i])
+        #self.i = 0
+        #self.word_list.remove(self.card.word_list[self.i])
 
         # Timer
         self.count_true +=1
         self.index +=1
         self.true_button_game_screen.setText(self.count_true)
+       
+
         if self.index > 20:
             self.count_false -=1
         
-        if self.count_true == 20:
+        elif self.count_true == 20:
             self.level +=1
             self.count_true = 0
             self.count_false = 0
             self.level_update()
-            self.level_game_screen.setText(self.level)
+            self.level_game_screen.setText(str(self.level))
             self.true_button_game_screen.setText(self.count_true)
             self.false_button_game_screen.setText(self.count_false)
             
             self.progress_game_screen.setProperty(self.count_true)
             self.card()
+        else:
+            self.word_list.setText(self.word_list[self.i][0])
+            self.true_button_game_screen.setText(self.count_true)
+            self.false_button_game_screen.setText(self.count_false)
+            self.progress_game_screen.setProperty("value",self.count_true)
+
+
+
 
         
         
 
     def false(self):
-        self.true_button_game_screen.setEnable(False)
-        self.false_button_game_screen.setEnable(False)
+        self.true_button_game_screen.setEnabled(False)
+        self.false_button_game_screen.setEnabled(False)
 
         self.i = 0
-        b=self.word_list.pop(self.i)
-        self.word_list.append(b)
+        # b=self.word_list.pop(self.i)
+        # self.word_list.append(b)
         self.count_false +=1
-        self.false_button_game_screen.setText(self.count_false)
+        self.num_of_false_game_screen.setText(self.count_false)
+        self.word_list.setText(self.word_list[self.i][1])
 
     def countDown(self,t):
         while t:
@@ -112,6 +124,7 @@ class Game(QMainWindow):
             print(timer, end="\r")
             time.sleep(1)
             t -= 1
+            self.word_list.setText(self.word_list[self.i][1])
     # print('Flip Card!')
 
     def total_time(self):
