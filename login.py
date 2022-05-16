@@ -1,14 +1,9 @@
-
 import json
 import sys
-from tkinter import Widget
 from PyQt5 import uic, QtWidgets
 import os
 from PyQt5.QtWidgets import QMainWindow, QApplication
 import menu
-
-
-
 
 
 class Login(QMainWindow):
@@ -24,7 +19,7 @@ class Login(QMainWindow):
 
 
     def login(self):
-        # login methode
+        # login method
         self.user_name = self.username_login_page.text()
 
         if not os.path.isfile('user/'+self.user_name+'.json'):
@@ -36,15 +31,16 @@ class Login(QMainWindow):
                 user_data = json.load(jsFile)
             if user_data['username'] == self.user_name:
                 self.cams = menu.Menu(self.user_name)
-                # Sonraki menuyu gostermek icin kullanilir.
+                # Used to go to the next page.
                 self.cams.show()
                 self.close()
+                # Ask to mentor?
         else:
             self.check_login_page.setText("Invalid username")
 
     
     def signup(self):
-        # signup methode
+        # signup method
         self.user_data = {
                 'username': self.user_name,
                 # 'password': self.password,
@@ -60,8 +56,8 @@ class Login(QMainWindow):
 
 
     def quit(self):
-        self.close()
-
+        sys.exit()
+# Main App
 app=QApplication(sys.argv)
 mainwindow=Login()
 widget=QtWidgets.QStackedWidget()
