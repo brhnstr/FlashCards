@@ -18,6 +18,7 @@ class Menu(QMainWindow):
         self.play_button_main_menu.clicked.connect(self.play)
         self.time_button_main_menu.clicked.connect(self.setTimer)
         self.quit_button_main_menu.clicked.connect(self.quit)
+        self.user_main_menu.setText("Welcome " + self.user_name)
         # self.progress_main_menu.clicked.connect(self.total_progress)
         # self.progress_main_menu.setProperty("a",self.total_progress())
         # self.progressBar_menu.setProperty(
@@ -32,7 +33,8 @@ class Menu(QMainWindow):
        
         
         self.cams.show()
-    
+
+
 
     def total_progress(self):
         with open('user/'+self.user_name+'.json', 'r') as jsFile:
@@ -43,7 +45,7 @@ class Menu(QMainWindow):
 
 
     def setTimer(self):
-        t=int(input('Set The Timer:'))
+        t = int(input('Set The Timer:'))
         game.countDown(t)
 
 
@@ -52,7 +54,5 @@ class Menu(QMainWindow):
 
 
     def quit(self):
-        # Record Data
+        self.level_update()
         sys.exit()
-    def back(self):
-        pass

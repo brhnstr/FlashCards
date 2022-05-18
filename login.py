@@ -24,7 +24,8 @@ class Login(QMainWindow):
 
         if not os.path.isfile('user/'+self.user_name+'.json'):
             self.signup()
-        
+
+
 
         elif os.path.isfile('user/'+self.user_name+'.json'):
             with open('user/'+self.user_name+'.json', 'r') as jsFile:
@@ -58,8 +59,8 @@ class Login(QMainWindow):
 
     def quit(self):
         sys.exit()
-    def back(self):
-        pass
+
+
         
 # Main App
 app=QApplication(sys.argv)

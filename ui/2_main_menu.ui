@@ -97,7 +97,7 @@ border-width:2px;
 border-radius:10px;</string>
     </property>
     <property name="text">
-     <string>WELCOME USER</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -206,7 +206,7 @@ border-color: rgb(3, 122, 118);
 color: #037a76;</string>
     </property>
     <property name="value">
-     <number>10</number>
+     <number>0</number>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
