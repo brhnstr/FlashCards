@@ -21,7 +21,7 @@ class Game(QMainWindow):
         #self.language_flash_card_game_screen.setText(self.name.word_list)
         self.exit_login_page.clicked.connect(self.exit)
         #self.level_game_screen.setText(str(self.level))
-        # self.back_game_screen.clicked.connect(self.back)
+        self.back_login_page.clicked.connect(self.back)
         self.count_true = 0
         self.count_false = 0
         self.index = 0
@@ -132,10 +132,10 @@ class Game(QMainWindow):
 
 
     def back(self):
-        self.level_update()
+        # self.level_update()
         self.cams = menu.Menu(self.name)
-        self.cams.show()
-        self.close()
+        # self.cams.show()
+        # self.close()
         
     def exit(self):
         self.level_update()
