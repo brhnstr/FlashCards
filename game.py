@@ -21,7 +21,7 @@ class Game(QMainWindow):
         #self.language_flash_card_game_screen.setText(self.name.word_list)
         self.exit_login_page.clicked.connect(self.exit)
         #self.level_game_screen.setText(str(self.level))
-        self.back_login_page.clicked.connect(self.back)
+        # self.back_game_screen.clicked.connect(self.back)
         self.count_true = 0
         self.count_false = 0
         self.index = 0
@@ -66,7 +66,7 @@ class Game(QMainWindow):
         
 
     def true(self):
-
+                                  
         # Timer
         self.count_true +=1
         
@@ -74,7 +74,7 @@ class Game(QMainWindow):
         self.false_button_game_screen.setEnabled(True)
         
         self.num_of_true_game_screen.setText(str(self.count_true))
-        self.progress_game_screen.setProperty("value",self.count_true*5)
+        self.progress_game_screen.setProperty("value",self.count_true*5)     
         self.language_flash_card_game_screen_2.setText(self.word_list[self.index][1])
         self.language_flash_card_game_screen.setText('English')                      #asagiyi aktif etsem English word gorunmuyor, comment yapinca da English word te kaliyor
         self.word_list.remove(self.word_list[self.index])
@@ -112,8 +112,8 @@ class Game(QMainWindow):
         self.language_flash_card_game_screen_2.setText(self.word_list[self.index][1])
         self.language_flash_card_game_screen.setText('English')                        #asagiyi aktif etsem English word gorunmuyor, comment yapinca da English word te kaliyor
 
-        # self.language_flash_card_game_screen_2.setText(self.word_list[self.index][0])
-        # self.language_flash_card_game_screen.setText('Netherlands')
+        self.language_flash_card_game_screen_2.setText(self.word_list[self.index][0])
+        self.language_flash_card_game_screen.setText('Netherlands')
         
     
 
@@ -132,10 +132,10 @@ class Game(QMainWindow):
 
 
     def back(self):
-        # self.level_update()
-        self.cams = menu.Menu(self.name)
-        # self.cams.show()
-        # self.close()
+        self.level_update()
+        self.cams = menu.Menu(self.user_name)
+        self.cams.show()
+        self.close()
         
     def exit(self):
         self.level_update()
